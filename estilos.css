@@ -1,0 +1,343 @@
+/* ======================================
+   RESET BÁSICO
+   ====================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 20px;
+    transition: background 0.5s ease;
+}
+
+/* ======================================
+   FONDOS SEGÚN EL CLIMA
+   ====================================== */
+body.clima-soleado {
+    background: linear-gradient(135deg, #f12711, #f5af19);
+}
+
+body.clima-nublado {
+    background: linear-gradient(135deg, #606c88, #3f4c6b);
+}
+
+body.clima-lluvioso {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+body.clima-nieve {
+    background: linear-gradient(135deg, #e6dada, #274046);
+}
+
+/* ======================================
+   CABECERA
+   ====================================== */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.banner {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+}
+
+/* ======================================
+   CONTENEDOR PRINCIPAL
+   ====================================== */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* ======================================
+   BUSCADOR
+   ====================================== */
+.buscador {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+#inputCiudad {
+    padding: 15px 25px;
+    border: 2px solid #ffffff;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 1rem;
+    width: 320px;
+    outline: none;
+}
+
+#inputCiudad::placeholder {
+    color: #dddddd;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-consultar {
+    background: #ffffff;
+    color: #1e3c72;
+    padding: 15px 30px;
+    font-size: 1rem;
+}
+
+.btn-consultar:hover {
+    background: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.btn-ubicacion {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    padding: 13px 25px;
+    font-size: 0.95rem;
+}
+
+.btn-ubicacion:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.texto-inicial {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+/* ======================================
+   RESULTADO DEL CLIMA
+   ====================================== */
+.resultado {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+    padding: 35px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    animation: aparecer 0.5s ease;
+    display: none;
+    margin-bottom: 30px;
+}
+
+.resultado.visible {
+    display: block;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.resultado .ciudad {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.resultado .pais {
+    font-size: 1.1rem;
+    color: #cccccc;
+    margin-bottom: 15px;
+}
+
+.resultado .icono-clima {
+    width: 120px;
+    height: 120px;
+    margin: 10px auto;
+}
+
+.resultado .temperatura {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.resultado .descripcion {
+    font-size: 1.3rem;
+    text-transform: capitalize;
+    margin-bottom: 25px;
+    color: #e8e8e8;
+}
+
+.resultado .detalles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.resultado .detalle {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 15px 10px;
+}
+
+.resultado .detalle .etiqueta {
+    font-size: 0.85rem;
+    color: #bbbbbb;
+    text-transform: uppercase;
+}
+
+.resultado .detalle .valor {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* ======================================
+   MENSAJES DE ESTADO
+   ====================================== */
+#estado {
+    margin-top: 10px;
+    color: #e0e0e0;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* ======================================
+   RETO 2: PRONÓSTICO 5 DÍAS
+   ====================================== */
+#pronostico {
+    margin-top: 30px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+}
+
+#pronostico h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.contenedor-pronostico {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dia {
+    text-align: center;
+    padding: 15px 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    min-width: 85px;
+}
+
+.dia img {
+    width: 50px;
+    height: 50px;
+}
+
+.temp-dia {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+/* ======================================
+   RETO 3: HISTORIAL
+   ====================================== */
+#historial {
+    margin-top: 25px;
+}
+
+#historial h4 {
+    margin-bottom: 10px;
+    color: #dddddd;
+    font-size: 0.9rem;
+}
+
+.btn-historial {
+    margin: 5px;
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+}
+
+.btn-historial:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+/* ======================================
+   RETO 4: MODO CLARO / OSCURO
+   ====================================== */
+body.modo-claro {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+body.modo-claro .banner,
+body.modo-claro img,
+body.modo-claro .icono-clima,
+body.modo-claro .dia img {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* ======================================
+   RETO 5: COMPARTIR WHATSAPP
+   ====================================== */
+.btn-compartir {
+    margin-top: 20px;
+    background: #25d366;
+    color: #ffffff;
+    font-size: 0.9rem;
+    padding: 10px 22px;
+}
+
+.btn-compartir:hover {
+    background: #1fb858;
+}
+
+/* ======================================
+   PIE DE PÁGINA
+   ====================================== */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #cccccc;
+    font-size: 0.85rem;
+}
+
+/* ======================================
+   RESPONSIVE
+   ====================================== */
+@media (max-width: 600px) {
+    header h1 { font-size: 1.8rem; }
+    #inputCiudad { width: 100%; }
+    .resultado .temperatura { font-size: 3rem; }
+}
